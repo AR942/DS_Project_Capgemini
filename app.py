@@ -109,8 +109,17 @@ plt.draw()
 model_v3 = load_model('model/ResNet152V2-Weather-Classification-03.h5')
 
 # Make Predictions
-preds = np.argmax(model_v3.predict(images), axis=-1)
+"""try/except method to handle empty data"""
+import sys
+
+try:
+    preds = np.argmax(model_v3.predict(images), axis=-1)
+except:
+    print("There is no image to predict, add some images")
+    sys.exit(1)
+
 print(preds)
+
 
 plt.figure(figsize=(15,20))
 for i, im in enumerate(images):
@@ -142,6 +151,7 @@ def get_pred(preds: list):
     return [class_names[pred] for pred in preds]
 
 prediction_label = get_pred(preds)
+print("The predictions are :")
 prediction_label
 
 """predictions to dataframe"""
