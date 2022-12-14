@@ -1,4 +1,4 @@
-# weather-classification-deployment
+# weather-classification-app using docker for deployment
 
 
 Create a local folder containing 3 folders:
