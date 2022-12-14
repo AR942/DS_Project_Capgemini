@@ -6,8 +6,8 @@ Create a local folder containing 3 folders:
 - output : where the .csv output of predictions will go
 - model : contains the classification model ResNet152V2-Weather-Classification-03.h5
 
-docker command to build the image:
-docker build -t image .
+docker command to build the image containing all the requirements needed and our project:
+> docker build -t image .
 
 docker command to launch the container on linux with volume mapping on the local folder:
 
