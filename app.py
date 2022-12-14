@@ -133,10 +133,9 @@ for i, im in enumerate(images):
     print(pred)
     
     
-plt.tight_layout()
-plt.draw()
+plt.savefig("output/plot_predictions.png", bbox_inches="tight")
 
-plt.show()
+
 
 
 import datetime
