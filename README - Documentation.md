@@ -1,6 +1,14 @@
 # Documentation :
 ## 1) Subject Explications and Objectives
 
+The purpose of this project is to industrialize a **Datascience model** through **containerization**.
+
+In order to achieve this goal, we had to first convert the Jupyter notebook into a python script. Only then were we able to build a **Docker container**.
+
+This Docker container must meet the following criteria:
+- must contain Python, python scripts and required packages
+- a volume mapping on an input directory and an other one on an output directory in the local filesystem
+
 ## 2) Description of the conception and implementation
 
 ## 3) Compilation process
