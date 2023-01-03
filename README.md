@@ -54,4 +54,4 @@ Troubleshoot : if mkdir error, simply restart the docker desktop and try again
 
 Finally you should get in the "output" folder of "ds-capgemini" (<name_of_the_folder_created_in_init>) folder:
 - A csv file (with timestamp in filename) with two columns : "image_name" for the name of the image and "prediction_label" for the predicted class of this image
-- A visual plot of the predictions to get a first visual idea of the performance of the Deep Learning model : if mkdir error, simply restart the docker desktop and try again
+- A visual plot of the predictions to get a first visual idea of the performance of the Deep Learning model
