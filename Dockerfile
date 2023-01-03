@@ -1,11 +1,12 @@
 FROM python:3.10.8
 
-# set working directory
+#set the working directory
 WORKDIR /weather-classification-app 
 
-#copy all required files to docker
+#copy all required local files to docker container
 COPY . ./ 
 
+#upgrade python's pip version
 RUN pip3 install --upgrade pip
 COPY requirements.txt requirements.txt
 
@@ -15,5 +16,5 @@ RUN mkdir -p /weather-classification-app/output
 RUN mkdir -p /weather-classification-app/test_images 
 RUN pip3 install -r requirements.txt
 
-
+#Instruction that is to be executed when the docker container starts
 CMD ["python", "app.py"]

@@ -52,15 +52,6 @@ print("WEATHER PREDICTION")
 class_names = {0: 'cloudy', 1: 'foggy', 2: 'rainy', 3: 'shine', 4: 'sunrise'}
 
 
-"""app = Flask(__name__)"""
-
-"""@app.route("/", methods=['GET', 'POST'])                 #initialising
-def home():                                              #function call
-
-    return render_template('home.html')    """              #return and calling HTML page (designed template)
-
-
-
 def load_image(path):
     '''
     Takes in path of the image and load it
@@ -109,7 +100,7 @@ plt.draw()
 model_v3 = load_model('model/ResNet152V2-Weather-Classification-03.h5')
 
 # Make Predictions
-"""try/except method to handle empty data"""
+"""try/except method to handle empty data/empty image folder"""
 import sys
 
 try:
@@ -132,7 +123,7 @@ for i, im in enumerate(images):
     show_image(im, title=f"Pred : {pred}")
     print(pred)
     
-    
+"""save predictions figure in the output folder"""    
 plt.savefig("output/plot_predictions.png", bbox_inches="tight")
 
 
@@ -164,7 +155,7 @@ path = "output"
 prediction_final.to_csv(os.path.join(path, "output-"+ date +".csv"))
 
 
-"""other method using csv library"""
+"""other method using csv library, if we ever get problem using first method"""
 
 """
 import csv
