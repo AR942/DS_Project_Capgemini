@@ -10,7 +10,6 @@
 ### b) Run the project
 #### weather-classification-app using docker for deployment
 
-
 Create a local folder containing 3 folders:
 - input : contains the .jpg images for testing
 - output : where the .csv output of predictions will go
