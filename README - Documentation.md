@@ -11,17 +11,24 @@ This Docker container must meet the following criteria:
 
 ## 2) Description of the conception and implementation
 
+To begin, we use and test the notebook "weather-classification-TP.ipynb" who include imports libraries, the predictions and 
+All of libraries use in  must be call in the "requirements" if we would like a run of the app.py
+To create the requirements by using "PyCharm", from Tools Menu, select sync Python Requirements. We have a opened dialog, specify the name of requirements file and use the compatible version.
+
+
+
 ## 3) Compilation process
 ### a) Way to start - Initialization
-
-
-### b) Run the project
-#### weather-classification-app using docker for deployment
 
 Create a local folder containing 3 folders:
 - input : contains the .jpg images for testing
 - output : where the .csv output of predictions will go
 - model : contains the classification model ResNet152V2-Weather-Classification-03.h5
+
+We have for example "test_images" dont vous pouvez utiliser quelques images mais nous avons décider d'en utiliser plus dans notre cas
+
+### b) Run the project
+#### weather-classification-app using docker for deployment
 
 docker command to build the image containing all the requirements needed and our project:
 > docker build -t image .
