@@ -1,4 +1,14 @@
-# weather-classification-app using docker for deployment
+# Documentation :
+## 1) Subject Explications and Objectives
+
+## 2) Description of the conception and implementation
+
+## 3) Compilation process
+### a) Way to start - Initialization
+
+
+### b) Run the project
+#### weather-classification-app using docker for deployment
 
 
 Create a local folder containing 3 folders:
