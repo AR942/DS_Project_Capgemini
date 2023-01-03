@@ -15,6 +15,9 @@ To begin, we use and test the notebook "weather-classification-TP.ipynb" who inc
 All of libraries use in  must be call in the "requirements" if we would like a run of the app.py
 To create the requirements by using "PyCharm", from Tools Menu, select sync Python Requirements. We have a opened dialog, specify the name of requirements file and use the compatible version.
 
+We also have:
+- An app.py containing the python code for loading and preprocessing of images, for loading of our classification model and to make predictions on the images and export them
+- A dockerfile containng all the instructions required to build our functional image
 
 ## 3) Compilation process
 ### a) Way to start - Initialization
@@ -46,4 +49,8 @@ On Windows:
 
 These commands depend on where you have created your project. 
 
-Note Bene : if mkdir error, simply restart the docker desktop and try again
+Troubleshoot : if mkdir error, simply restart the docker desktop and try again
+
+Finally you should get in the "output" folder of "ds-capgemini" (<name_of_the_folder_created_in_init>) folder:
+- A csv file (with timestamp in filename) with two columns : "image_name" for the name of the image and "prediction_label" for the predicted class of this image
+- A visual plot of the predictions to get a first visual idea of the performance of the Deep Learning model : if mkdir error, simply restart the docker desktop and try again
