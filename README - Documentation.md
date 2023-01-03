@@ -20,27 +20,29 @@ To create the requirements by using "PyCharm", from Tools Menu, select sync Pyth
 ## 3) Compilation process
 ### a) Way to start - Initialization
 
-Create a local folder containing 3 folders:
+In your own computer, create a local folder containing 3 folders:
 - input : contains the .jpg images for testing
 - output : where the .csv output of predictions will go
 - model : contains the classification model ResNet152V2-Weather-Classification-03.h5
 
-We have for example "test_images" dont vous pouvez utiliser quelques images mais nous avons décider d'en utiliser plus dans notre cas
+Do not lose sight of the path of your folder that you have created for the occasion in order to use it in the deployment. 
+
+We have for example "test_images" which you can use some images but we decided to use more in our case
 
 ### b) Run the project
 #### weather-classification-app using docker for deployment
-
-docker command to build the image containing all the requirements needed and our project:
+To run the project and build the image containing all the requirements needed and our project, Docker command is:
 > docker build -t image .
 
-docker command to launch the container on linux with volume mapping on the local folder:
+To launch the container with volume mapping on the local folder, Docker command is :
+On Linux:
+> docker run -v /Users/<name_of_user>/Desktop/ds-capgemini/output:/weather-classification-app/output \
+> -v /Users/<name_of_user>/Desktop/ds-capgemini/input:/weather-classification-app/test_images \
+> -v /Users/<name_of_user>/Desktop/ds-capgemini/model:/weather-classification-app/model image
 
-on linux:
-> docker run -v /Users/arthusrouhi/Desktop/ds-capgemini/output:/weather-classification-app/output \
-> -v /Users/arthusrouhi/Desktop/ds-capgemini/input:/weather-classification-app/test_images \
-> -v /Users/arthusrouhi/Desktop/ds-capgemini/model:/weather-classification-app/model image
+On Windows:
+> docker run -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\input:/weather-classification-app/test_images -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\output:/weather-classification-app/output -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\model:/weather-classification-app/model image
 
-on windows:
-> docker run -v C:\Users\smojt\Desktop\DS_Capgemini\input:/weather-classification-app/test_images -v C:\Users\smojt\Desktop\DS_Capgemini\output:/weather-classification-app/output -v C:\Users\smojt\Desktop\DS_Capgemini\model:/weather-classification-app/model image
+These commands depend on where you have created your project. 
 
--> if mkdir error, simply restart the docker desktop and try again
+Note Bene : if mkdir error, simply restart the docker desktop and try again
