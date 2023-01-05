@@ -1,4 +1,8 @@
 # Data Science project for CAPGEMINI:
+#### Lucas Benyamin
+#### Elena Moreac 
+#### Arthus Rouhi
+
 ## 1) Subject Explications and Objectives
 
 The purpose of this project is to industrialize a **Datascience model** through **containerization**.
