@@ -40,10 +40,13 @@ We have for predictions "test_images" which you can use some images but we decid
 
 ### b) Run the project
 #### weather-classification-app using docker for deployment
-First, build the image "image" containing all the requirements needed and our project, Docker command is:
+First, access the project folder and open Docker Desktop:
+> cd /Users/path/to/weather-classification-deployment
+
+Then, build the image "image" containing all the requirements needed and our project, Docker command is:
 > docker build -t image .
 
-Then, run the image "image" to launch the container with volume mapping on the local folder, Docker command is :
+finally, run the image "image" to launch the container with volume mapping on the local folders, Docker command is :
 On Linux:
 > docker run -v /Users/<name_of_user>/Desktop/ds-capgemini/output:/weather-classification-app/output \
 > -v /Users/<name_of_user>/Desktop/ds-capgemini/input:/weather-classification-app/test_images \
