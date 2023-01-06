@@ -30,7 +30,7 @@ We also have:
 First, you need Docker Desktop installed on your local machine : https://docs.docker.com/desktop/install/linux-install/
 
 On your machine, create on your desktop a local folder  called "ds-capgemini" containing 3 subfolders:
-- input : contains the .jpg images to predict
+- input : contains the .jpg images to predict (max 25 images at a time)
 - output : where the .csv output will be printed after we run the docker image
 - model : contains the classification model ResNet152V2-Weather-Classification-03.h5
 
