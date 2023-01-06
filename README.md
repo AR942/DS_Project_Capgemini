@@ -34,6 +34,10 @@ In your machine, create a local folder "ds-capgemini" containing 3 subfolders:
 - output : where the .csv output will be printed after we run the docker image
 - model : contains the classification model ResNet152V2-Weather-Classification-03.h5
 
+![image](https://user-images.githubusercontent.com/63624017/211024452-52491690-b313-41e3-85b9-dbed4a28daf7.png)
+![image](https://user-images.githubusercontent.com/63624017/211024551-bb124179-0642-4dfb-ab0f-dcaa236a5891.png)
+![image](https://user-images.githubusercontent.com/63624017/211024638-0bce47c7-21bf-4892-b11b-15fd0d136074.png)
+
 Do not lose sight of the path of your folder that you have created for the occasion in order to use it in the deployment. 
 
 We have for predictions "test_images" which you can use some images but we decided to use more in our case
@@ -46,11 +50,18 @@ First, access the project folder and open Docker Desktop:
 Then, build the image "image" containing all the requirements needed and our project, Docker command is:
 > docker build -t image .
 
+![image](https://user-images.githubusercontent.com/63624017/211024222-c8431dc6-6d51-4381-aa48-a1d2d33f12b8.png)
+
+
+
 finally, run the image "image" to launch the container with volume mapping on the local folders, Docker command is :
 On Linux:
 > docker run -v /Users/<name_of_user>/Desktop/ds-capgemini/output:/weather-classification-app/output \
 > -v /Users/<name_of_user>/Desktop/ds-capgemini/input:/weather-classification-app/test_images \
 > -v /Users/<name_of_user>/Desktop/ds-capgemini/model:/weather-classification-app/model image
+
+![image](https://user-images.githubusercontent.com/63624017/211024299-22c4176d-87c4-4199-8f9d-31aa6ad70385.png)
+
 
 On Windows:
 > docker run -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\input:/weather-classification-app/test_images -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\output:/weather-classification-app/output -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\model:/weather-classification-app/model image
@@ -62,5 +73,6 @@ Troubleshoot : if mkdir error, simply restart the docker desktop and try again
 Finally you should get in the "output" folder of "ds-capgemini" (<name_of_the_folder_created_in_init>) folder:
 - A csv file (with timestamp in filename) with two columns : "image_name" for the name of the image and "prediction_label" for the predicted class of this image
 - A visual plot of the predictions to get a first visual idea of the performance of the Deep Learning model
+![image](https://user-images.githubusercontent.com/63624017/211024344-4f90196a-e64f-4c14-882a-3114dd589a2f.png)
 
-![image](https://user-images.githubusercontent.com/63624017/211024098-50518931-c20c-4805-95af-d121aa5ae84d.png)
+
