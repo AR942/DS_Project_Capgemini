@@ -63,4 +63,4 @@ Finally you should get in the "output" folder of "ds-capgemini" (<name_of_the_fo
 - A csv file (with timestamp in filename) with two columns : "image_name" for the name of the image and "prediction_label" for the predicted class of this image
 - A visual plot of the predictions to get a first visual idea of the performance of the Deep Learning model
 
-[alt text](https://postimg.cc/fkJ2pz85)
+![image](https://user-images.githubusercontent.com/63624017/211024098-50518931-c20c-4805-95af-d121aa5ae84d.png)
