@@ -22,14 +22,14 @@ To create the requirements by using "PyCharm", from Tools Menu, select sync Pyth
 
 We also have:
 - An app.py containing the python code for loading and preprocessing of images, for loading of our classification model and to make predictions on the images and export them
-- A dockerfile containng all the instructions required to build our functional image
+- A dockerfile containing all the instructions required to build our functional image which will contain our DL application
 
 ## 3) Compilation process
 ### a) Way to start - Initialization
 
-First, you need Docker Desktop installed on your local machine
+First, you need Docker Desktop installed on your local machine : https://docs.docker.com/desktop/install/linux-install/
 
-In your machine, create a local folder "ds-capgemini" containing 3 subfolders:
+On your machine, create on your desktop a local folder  called "ds-capgemini" containing 3 subfolders:
 - input : contains the .jpg images to predict
 - output : where the .csv output will be printed after we run the docker image
 - model : contains the classification model ResNet152V2-Weather-Classification-03.h5
@@ -66,7 +66,7 @@ On Linux:
 On Windows:
 > docker run -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\input:/weather-classification-app/test_images -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\output:/weather-classification-app/output -v C:\Users\<name_of_user>\Desktop\DS_Capgemini\model:/weather-classification-app/model image
 
-These commands depend on where you have created your project folder "ds-capgemini". 
+These commands depend on where you have created your project folder "ds-capgemini" so take care of path. 
 
 Troubleshoot : if mkdir error, simply restart the docker desktop and try again
 
