@@ -36,15 +36,39 @@ regroupements = {
     'CIB_London': 'NATIXIS'
 }
 
+import pandas as pd
+import re
+
+def regrouper_urlc(colonne, dico_urlc, target_map_urlc):
+    # Supprimer les caractères '|"' de la colonne
+    colonne = colonne.apply(lambda x: re.sub(r'\|\"', '', x))
+    
+    # Créer un nouveau dictionnaire de correspondance d'urlc
+    new_urlcdict = {i: k for k, v in dico_urlc.items() for i in v}
+    
+    # Mapper les valeurs de la colonne avec le nouveau dictionnaire
+    colonne_mapped = colonne.str.findall('|'.join(new_urlcdict.keys())).str[0].map(new_urlcdict)
+    
+    # Remplacer les valeurs nulles par "Other"
+    colonne_mapped.fillna('Other', inplace=True)
+    
+    # Mapper les valeurs de la colonne avec le dictionnaire de correspondance de la cible
+    colonne_mapped = colonne_mapped.map(target_map_urlc)
+    
+    return colonne_mapped
+
+# Exemple d'utilisation
+data = pd.DataFrame({'urlc': ['keyword1|keyword2', 'keyword3|keyword4|keyword5', 'keyword6']})
+
 testurl = pd.read_csv('notebooks/data/ML0001/Copie de urlc2.csv', sep='delimiter')
 testurl = pd.DataFrame(testurl['urlc;Category'].str.split(';', expand=True))
 testurl.rename(columns={0: 'keywords', 1: 'value'}, inplace=True)
 dico_urlc = testurl.groupby("value")["keywords"].apply(list).to_dict()
 
-data['urlc'] = data['urlc'].apply(lambda x: re.sub(r'\|\"', '', x))
-new_urlcdict = {i: k for k, v in dico_urlc.items() for i in v}
-data.urlc.str.findall('|'.join(new_urlcdict.keys())).str[0].map(new_urlcdict)
-data['urlc_category']=data.urlc.str.findall('|'.join(new_urlcdict.keys())).str[0].map(new_urlcdict)
-data["urlc_category"].fillna('Other', inplace = True)
-target_map_urlc = {"Trisque":3, "Prisque": 2, "PasRisque": 1, "Other": 0}
+target_map_urlc = {"Trisque": 3, "Prisque": 2, "PasRisque": 1, "Other": 0}
+
+data['urlc_category'] = regrouper_urlc(data['urlc'], dico_urlc, target_map_urlc)
+
+print(data)
+
 
