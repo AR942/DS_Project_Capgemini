@@ -36,22 +36,15 @@ regroupements = {
     'CIB_London': 'NATIXIS'
 }
 
-import pandas as pd
+testurl = pd.read_csv('notebooks/data/ML0001/Copie de urlc2.csv', sep='delimiter')
+testurl = pd.DataFrame(testurl['urlc;Category'].str.split(';', expand=True))
+testurl.rename(columns={0: 'keywords', 1: 'value'}, inplace=True)
+dico_urlc = testurl.groupby("value")["keywords"].apply(list).to_dict()
 
-def regrouper_colonne(colonne, regroupements, categories_conservees):
-    # Appliquer les regroupements sur la colonne
-    colonne_regroupee = colonne.apply(lambda x: regroupements.get(x, x))
-    
-    # Remplacer les catégories non conservées par "Other"
-    colonne_regroupee = colonne_regroupee.apply(lambda x: x if x in categories_conservees else 'Other')
-    
-    return colonne_regroupee
-
-
-
-categories_conservees = ['MIROVA', 'BPCE', 'NATIXIS']
-
-data['raw_metier_regroupee'] = regrouper_colonne(data['raw_metier'], regroupements, categories_conservees)
-
-print(data)
+data['urlc'] = data['urlc'].apply(lambda x: re.sub(r'\|\"', '', x))
+new_urlcdict = {i: k for k, v in dico_urlc.items() for i in v}
+data.urlc.str.findall('|'.join(new_urlcdict.keys())).str[0].map(new_urlcdict)
+data['urlc_category']=data.urlc.str.findall('|'.join(new_urlcdict.keys())).str[0].map(new_urlcdict)
+data["urlc_category"].fillna('Other', inplace = True)
+target_map_urlc = {"Trisque":3, "Prisque": 2, "PasRisque": 1, "Other": 0}
 
