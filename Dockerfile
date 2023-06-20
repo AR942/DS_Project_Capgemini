@@ -36,13 +36,22 @@ regroupements = {
     'CIB_London': 'NATIXIS'
 }
 
+import pandas as pd
 
-data['raw_metier'] = data['raw_metier'].apply(lambda x: regroupements.get(x, x))
+def regrouper_colonne(colonne, regroupements, categories_conservees):
+    # Appliquer les regroupements sur la colonne
+    colonne_regroupee = colonne.apply(lambda x: regroupements.get(x, x))
+    
+    # Remplacer les catégories non conservées par "Other"
+    colonne_regroupee = colonne_regroupee.apply(lambda x: x if x in categories_conservees else 'Other')
+    
+    return colonne_regroupee
 
-categories_autres = data['raw_metier'].unique()
+
+
 categories_conservees = ['MIROVA', 'BPCE', 'NATIXIS']
 
-data['raw_metier'] = data['raw_metier'].apply(lambda x: x if x in categories_conservees else 'Other')
+data['raw_metier_regroupee'] = regrouper_colonne(data['raw_metier'], regroupements, categories_conservees)
 
-repartition = data['raw_metier'].value_counts().reset_index()
-repartition.columns = ['raw_metier', 'count']
+print(data)
+
